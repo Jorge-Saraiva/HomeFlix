@@ -1,0 +1,32 @@
+CRIANDO ESTRUTURA DO PROJETO (SITE)
+
+
+- Homepage
+- Fazer Login e Criar Conta (Usuário e Autenticação)
+    - Email
+        - Validação e-mail
+    - Username
+    - Senha
+        - Validação senha
+    - Filmes vistos
+    - Editar Perfil
+        - Alteração Username
+        - Alteração e-mail
+        - Alteração Senha
+
+- Filmes/Séries
+    - Episódios
+        - Vídeos
+        - Título
+        - Link do vídeo
+    - Thumb (foto do filme/série)
+    - Título
+    - Categoria
+    - Descrição
+    - Quantidade de Views
+        - Vídeos Populares
+    - Data Criação
+        - Vídeos novos
+
+- Barra de Pesquisa
+

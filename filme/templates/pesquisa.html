@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block titulo %}
+Pesquisa de Filmes
+{% endblock %}
+
+{% block content %}
+
+  <main class="bg-primary_black w-full">
+    <section class="bg-primary_black min-h-screen flex justify-center py-10">
+      <div class="p-5 w-12/12">
+        <h2 class="text-gray-200 text-2xl font-medium flex justify-center">
+
+          {% if request.GET.query == "" %}
+
+            {% if lista_filmes_recentes|length == 0 %}
+              Nenhum Filme Registrado
+            {% else %}
+              Todos os Filmes
+            {% endif %}
+
+          {% else %}
+            Resultado da Busca "{{ request.GET.query }}"
+          {% endif %}
+
+        </h2>
+        <div class="flex flex-wrap items-center min-w-full movie-lis justify-center mt-3">
+
+          {% for filme in object_list %}
+            <div class="my-2 mx-2 bg-blue-500 overflow-hidden flex-shrink-0 rounded-md cursor-pointer h-40 sm:h-64 md:h-64 lg:h-64 xl:h-64 2lx:h-64 sm:w-64 md:w-64 lg:w-72 xl:w-80 2lx:w-96">
+              <a href="{% url 'filme:detalhesfilme' filme.pk %}">
+                <img src="{{ filme.thumb.url }}" class="object-cover w-full h-full" alt="">
+              </a>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,185 @@
+<!--
+ Construção barra de navegação
+
+-->
+
+<!-- Parâmetro para carregar imagens na página -->
+{% load static %}
+
+{% block head %}
+<style>
+@media (max-width: 575.98px) {
+    .imagem {
+        width: 80px;
+    }
+    #campo_pesquisar {
+        width: 95%;
+    }
+    footer li {
+        font-size: 0.8em;
+    }
+    .background {
+        width: 100%;
+        height: 300px;
+        padding-bottom: 0;
+        padding-left: 5px;
+        margin-bottom: 0;
+    }
+    .titulo {
+        font-size: 1.5em;
+        margin: 0;
+    }
+    .play {
+        font-size: 0.8em;
+        width: 20px;
+        margin: 0;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .imagem {
+        width: 100px;
+    }
+    footer li {
+        font-size: 0.8em;
+    }
+    .background {
+        width: 100%;
+        height: 400px;
+        padding-bottom: 0;
+        padding-left: 5px;
+        margin-bottom: 0;
+    }
+    .titulo {
+        font-size: 1.5em;
+        margin: 0;
+
+    }
+    .play {
+        font-size: 0.8em;
+        width: 20px;
+        margin: 0;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .imagem {
+        width: 100px;
+    }
+    footer li {
+        font-size: 0.8em;
+    }
+    .background {
+        width: 100%;
+        height: 500px;
+        padding-bottom: 0;
+        padding-left: 5px;
+        margin-bottom: 0;
+    }
+    .titulo {
+        font-size: 1.5em;
+        margin: 0;
+
+    }
+    .play {
+        font-size: 0.8em;
+        width: 20px;
+        margin: 0;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .imagem {
+        width: 120px;
+    }
+    footer li {
+        font-size: 0.8em;
+    }
+    .background {
+        width: 100%;
+        height: 600px;
+        padding-bottom: 0;
+        padding-left: 5px;
+        margin-bottom: 0;
+    }
+    .titulo {
+        font-size: 1.5em;
+        margin: 0;
+
+    }
+    .play {
+        font-size: 0.8em;
+        width: 20px;
+        margin: 0;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+    .imagem {
+        width: 120px;
+    }
+}
+</style>
+
+{% endblock %}
+
+<nav class="w-full flex justify-between items-center py-2 px-2 fixed z-50">
+
+    <div class="w-3/12">
+        <a href="/">
+            <img src="{% static 'images/homeflix.png' %}" alt="" class="w-full imagem">
+        </a>
+    </div>
+
+    <div class="w-9/12 flex flex-nowrap justify-end">
+        {% if user.is_authenticated %}
+        <div class="mr-1">
+
+            <form method="get" class="px-2" action="{% url 'filme:pesquisafilme' %}"> <!-- GET -> Padrão 'pesquisa' -->
+                <input type="text" class="py-1 px-1 rounded-md text-black" id="campo_pesquisar" name="query" placeholder="Pesquisar..."> <!-- value=" request.GET.query " -> informa no campo pesquisa o que foi escrito -->
+                <input type="submit" value="">
+            </form>
+
+        </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <div class="mr-1">
+                <a href="{% url 'filme:logout' %}">
+                    <button class="bg-red-600 text-white py-1 px-2 rounded-md">Sair</button>
+                </a>
+            </div>
+        {% else %}
+            <div class="mr-1">
+                <a href="{% url 'filme:login' %}">
+                    <button class="bg-red-600 text-white py-1 px-3 rounded-md">Login</button>
+                </a>
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <div class="mr-1">
+            <a href="{% url 'filme:editar_perfil' user.pk %}">
+                <button class="bg-red-600 text-white py-1 px-2 rounded-md">Perfil</button>
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+</nav>
+
+
+
+
+
+
